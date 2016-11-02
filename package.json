@@ -1,12 +1,12 @@
 {
-  "name": "sage-fork",
+  "name": "wordpress-starter-theme",
   "version": "8.4.2",
   "author": "Jerry Garcia",
   "homepage": "bigroomstudios.com",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git://github.com/BigRoomStudios/sage.git"
+    "url": "git://github.com/BigRoomStudios/wordpress-starter-theme.git"
   },
   "bugs": {
     "url": "https://github.com/roots/sage/issues"
