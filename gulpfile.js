@@ -13,6 +13,7 @@ var lazypipe     = require('lazypipe');
 var less         = require('gulp-less');
 var merge        = require('merge-stream');
 var cssNano      = require('gulp-cssnano');
+var phpcs        = require('gulp-phpcs');
 var plumber      = require('gulp-plumber');
 var rev          = require('gulp-rev');
 var runSequence  = require('run-sequence');
@@ -232,6 +233,18 @@ gulp.task('jshint', function() {
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'))
     .pipe(gulpif(enabled.failJSHint, jshint.reporter('fail')));
+});
+
+gulp.task('phplint', function () {
+    return gulp.src(['*/*.php'])
+        // Validate files using PHP Code Sniffer
+        .pipe(phpcs({
+            bin: 'vendor/bin/phpcs',
+            standard: 'PSR2',
+            warningSeverity: 0
+        }))
+        // Log all problems that was found
+        .pipe(phpcs.reporter('log'));
 });
 
 // ### Clean
