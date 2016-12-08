@@ -10,7 +10,7 @@
         $var2
     );
 
-    if($children !== null) {
+    if ($children !== null) {
         $children = '<div class="children">'.$children.'</div>';
     }
 
