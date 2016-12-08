@@ -40,7 +40,7 @@
      "gulp-imagemin": "^3.0.3",
      "gulp-jshint": "^2.0.1",
      "gulp-less": "^3.0.3",
-     "gulp-phpcs": "3.10.x",
+     "gulp-phpcs": "1.3.x",
      "gulp-plumber": "^1.0.1",
      "gulp-rename": "^1.2.2",
      "gulp-rev": "^7.1.2",
