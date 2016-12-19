@@ -29,7 +29,8 @@
 
 
 // Gets called by components to declare local vars and set default values
-function initComponent($args, $vars) {
+function initComponent($args, $vars)
+{
 
     $localVarDefs = [];
 
@@ -38,10 +39,8 @@ function initComponent($args, $vars) {
     $argsLen = count($args);
 
     for ($i = 0; $i < $varsLen; $i++) {
-
         // Not enough args passed in, so make everything else default
-        if($i >= $argsLen) {
-
+        if ($i >= $argsLen) {
             $localVarDefs[$vars[$i][0]] = $vars[$i][1];
             continue;
         }
@@ -49,7 +48,7 @@ function initComponent($args, $vars) {
         $default = null;
         $varName = null;
 
-        if(is_array($vars[$i])) {
+        if (is_array($vars[$i])) {
             $varName = $vars[$i][0];
             $default = $vars[$i][1];
         } else {
@@ -62,7 +61,8 @@ function initComponent($args, $vars) {
     return $localVarDefs;
 }
 
-function getComponent() {
+function getComponent()
+{
 
     $args = func_get_args();
     $componentName = $args[0];
@@ -70,26 +70,22 @@ function getComponent() {
     $args = array_slice($args, 1);
     $path = null;
 
-    if(file_exists(get_stylesheet_directory() . '/components/'.$componentName.'/'.$componentName.'.php')) {
+    if (file_exists(get_stylesheet_directory() . '/components/'.$componentName.'/'.$componentName.'.php')) {
         $path = 'components/'.$componentName.'/'.$componentName.'.php';
     }
 
 
-    if(!$path) {
-
+    if (!$path) {
         // If not a top-level component, just assume a path was passed in
         $componentPath = $componentName;
         $componentName = explode('/', $componentPath);
         $componentName = end($componentName);
 
-        if(file_exists(get_stylesheet_directory() . '/components/'.$componentPath.'.php')) {
-
+        if (file_exists(get_stylesheet_directory() . '/components/'.$componentPath.'.php')) {
             $path = 'components/'.$componentPath.'.php';
-        } else if(file_exists(get_stylesheet_directory() . '/components/'.$componentPath.'/'.$componentName.'.php')) {
-
+        } elseif (file_exists(get_stylesheet_directory() . '/components/'.$componentPath.'/'.$componentName.'.php')) {
             $path = 'components/'.$componentPath.'/'.$componentName.'.php';
-        } else if(file_exists(get_stylesheet_directory() . '/components/'.$componentPath.'/index.php')) {
-
+        } elseif (file_exists(get_stylesheet_directory() . '/components/'.$componentPath.'/index.php')) {
             $path = 'components/'.$componentPath.'/index.php';
         }
     }
@@ -102,9 +98,9 @@ function getComponent() {
 }
 
 // This lets you pass a template name and save it to a variable, need to have 'templates/tmpl-name' like normal
-function getTemplate($tmplName) {
+function getTemplate($tmplName)
+{
 
-    return file_get_contents( get_stylesheet_directory() . '/' . $tmplName . '.php');;
+    return file_get_contents(get_stylesheet_directory() . '/' . $tmplName . '.php');
+    ;
 }
-
-
